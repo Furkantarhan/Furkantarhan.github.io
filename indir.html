@@ -2,20 +2,20 @@
 <html lang="tr">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Simeal Apps & Digitar Games | Mobil Oyun İndirme Merkezi</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Simeal Apps & Digitar Games | Mobil İndirme Merkezi</title>
     <style>
         * { box-sizing: border-box; margin: 0; padding: 0; }
         body {
             font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-            background: linear-gradient(135deg, #0f172a 0%, #020617 100%);
-            color: #f8fafc;
+            background: linear-gradient(135deg, #090d16 0%, #020408 100%);
+            color: #f1f5f9;
             min-height: 100vh;
-            padding: 20px 14px 60px;
+            padding: 24px 14px 60px;
         }
         .header {
             text-align: center;
-            padding: 20px 0 24px;
+            padding: 10px 0 24px;
         }
         .badge {
             display: inline-block;
@@ -23,15 +23,16 @@
             color: white;
             font-size: 11px;
             font-weight: 800;
-            padding: 5px 12px;
+            padding: 6px 14px;
             border-radius: 20px;
             letter-spacing: 1.5px;
-            margin-bottom: 10px;
+            margin-bottom: 12px;
+            box-shadow: 0 4px 12px rgba(16, 185, 129, 0.3);
         }
         h1 {
             font-size: 26px;
             font-weight: 900;
-            background: linear-gradient(90deg, #38bdf8, #818cf8);
+            background: linear-gradient(90deg, #38bdf8, #818cf8, #c084fc);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             margin-bottom: 6px;
@@ -41,56 +42,65 @@
             font-size: 14px;
         }
         .tip-box {
-            background: rgba(30, 41, 59, 0.7);
-            border: 1px solid #334155;
-            border-radius: 14px;
-            padding: 12px 16px;
+            background: rgba(30, 41, 59, 0.6);
+            border: 1px solid rgba(56, 189, 248, 0.25);
+            border-radius: 16px;
+            padding: 14px 18px;
             margin-bottom: 24px;
             font-size: 13px;
             color: #cbd5e1;
             line-height: 1.5;
-            max-width: 540px;
+            max-width: 560px;
             margin-left: auto;
             margin-right: auto;
+            backdrop-filter: blur(8px);
         }
         .tip-box strong { color: #38bdf8; }
         .section-title {
-            max-width: 540px;
-            margin: 24px auto 10px;
-            font-size: 16px;
+            max-width: 560px;
+            margin: 28px auto 12px;
+            font-size: 17px;
             font-weight: 800;
             color: #38bdf8;
             display: flex;
             align-items: center;
             gap: 8px;
+            padding-left: 4px;
         }
         .grid {
             display: grid;
             grid-template-columns: 1fr;
             gap: 14px;
-            max-width: 540px;
+            max-width: 560px;
             margin: 0 auto;
         }
         .card {
-            background: #1e293b;
+            background: rgba(30, 41, 59, 0.7);
             border: 1px solid #334155;
-            border-radius: 16px;
-            padding: 16px;
+            border-radius: 18px;
+            padding: 14px 16px;
             display: flex;
             align-items: center;
             justify-content: space-between;
-            transition: transform 0.15s ease;
+            transition: all 0.2s ease;
+            box-shadow: 0 4px 14px rgba(0,0,0,0.25);
         }
         .card:active {
             transform: scale(0.98);
         }
         .card-hot {
             border: 1.5px solid #10b981;
-            background: linear-gradient(135deg, #1e293b 0%, #132b28 100%);
+            background: linear-gradient(135deg, rgba(30, 41, 59, 0.85) 0%, rgba(19, 43, 40, 0.85) 100%);
+            box-shadow: 0 4px 20px rgba(16, 185, 129, 0.15);
+        }
+        .card-priority {
+            border: 2px solid #f59e0b;
+            background: linear-gradient(135deg, rgba(30, 41, 59, 0.9) 0%, rgba(43, 35, 19, 0.9) 100%);
+            box-shadow: 0 0 25px rgba(245, 158, 11, 0.25);
         }
         .card-lotto {
             border: 1.5px solid #f59e0b;
-            background: linear-gradient(135deg, #1e293b 0%, #2b2313 100%);
+            background: linear-gradient(135deg, rgba(30, 41, 59, 0.85) 0%, rgba(43, 35, 19, 0.85) 100%);
         }
         .left {
             display: flex;
@@ -99,26 +109,25 @@
             flex: 1;
             min-width: 0;
         }
-        .icon {
-            width: 52px;
-            height: 52px;
+        .app-icon {
+            width: 58px;
+            height: 58px;
             border-radius: 14px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 26px;
-            background: #0f172a;
+            object-fit: cover;
             flex-shrink: 0;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.45);
+            border: 1px solid rgba(255,255,255,0.12);
+            background: #1e293b;
         }
         .meta {
             min-width: 0;
+            flex: 1;
         }
         .title {
             font-size: 15px;
             font-weight: 800;
             color: #ffffff;
-            margin-bottom: 2px;
+            margin-bottom: 3px;
             white-space: nowrap;
             overflow: hidden;
             text-overflow: ellipsis;
@@ -126,22 +135,25 @@
         .desc {
             font-size: 12px;
             color: #94a3b8;
-            line-height: 1.3;
+            line-height: 1.35;
         }
         .tag {
             display: inline-block;
             font-size: 10px;
-            font-weight: 700;
-            padding: 2px 6px;
+            font-weight: 800;
+            padding: 3px 8px;
             border-radius: 6px;
-            margin-top: 4px;
+            margin-top: 5px;
+            letter-spacing: 0.3px;
         }
         .tag-green { background: #064e3b; color: #34d399; }
         .tag-gold { background: #451a03; color: #fbbf24; }
         .tag-blue { background: #0c4a6e; color: #38bdf8; }
+        .tag-purple { background: #3b0764; color: #c084fc; }
         .btn-down {
             display: inline-flex;
             align-items: center;
+            justify-content: center;
             gap: 6px;
             background: linear-gradient(135deg, #10b981 0%, #059669 100%);
             color: white;
@@ -151,16 +163,23 @@
             padding: 10px 18px;
             border-radius: 12px;
             flex-shrink: 0;
+            margin-left: 10px;
             box-shadow: 0 4px 12px rgba(16, 185, 129, 0.35);
         }
         .btn-down:active {
             opacity: 0.85;
+            transform: scale(0.96);
+        }
+        .btn-gold {
+            background: linear-gradient(135deg, #f59e0b 0%, #d97706 100%);
+            box-shadow: 0 4px 12px rgba(245, 158, 11, 0.35);
         }
         .footer {
             text-align: center;
-            margin-top: 40px;
+            margin-top: 48px;
             font-size: 12px;
             color: #64748b;
+            line-height: 1.6;
         }
     </style>
 </head>
@@ -168,168 +187,123 @@
 
     <div class="header">
         <div class="badge">DİGİTAR GAMES & SIMEAL APPS</div>
-        <h1>Mobil Oyun İndirme Portalı</h1>
-        <p class="sub">Tüm oyunlar telefonunuza tek tıkla yüklenmeye hazır!</p>
+        <h1>Mobil Oyun İndirme Merkezi</h1>
+        <p class="sub">Tüm oyunlar ve güncel v2 logoları ile yayına hazır!</p>
     </div>
 
     <div class="tip-box">
-        📲 <strong>Son Güncellemeler:</strong> Kıbrıs Rulet kaldırıldı ve yerine popüler "aa" tarzı <strong>Arrow Pin</strong> eklendi! Tüm oyunların müzikleri türe özel (Kalimba, Akustik, Lounge, Synth) yeniden bestelendi ve yapay zeka gradyanları kaldırılarak zarif <strong>Obsidian Stüdyo Girişi</strong> getirildi.
+        🚀 <strong>Güncel Durum:</strong> Tüm oyunların simgeleri tamamen özgün v2 karakter çizimleriyle (Köpek, Arı, Slime, Skebob Tavşan, Dart İğnesi vb.) güncellendi. Kıbrıs Rulet kaldırıldı. İndirmek istediğiniz oyunun yanındaki <strong>İndir</strong> butonuna basarak telefonunuza kurabilirsiniz.
     </div>
 
     <!-- 1. BÖLÜM: YENİ VE ÖNE ÇIKANLAR -->
     <div class="section-title">🌟 Yeni & Öne Çıkan Başyapıtlar</div>
     <div class="grid">
 
+        <!-- RESCUE DOG -->
+        <div class="card card-priority">
+            <div class="left">
+                <img class="app-icon" src="icons/rescue-dog-512.png" alt="Rescue Dog">
+                <div class="meta">
+                    <div class="title" style="color: #fbbf24;">Rescue Dog: Draw to Save</div>
+                    <div class="desc">Kızgın Arı Sürüsü Simülasyonu • Çizgi Fiziği • Çoklu Dil Desteği • 120 FPS</div>
+                    <span class="tag tag-gold">MARKET 1. ÖNCELİK (4.7 MB)</span>
+                </div>
+            </div>
+            <a href="apks/10-RescueDog.apk" class="btn-down btn-gold" download>İndir</a>
+        </div>
+
         <!-- SLIME POP 3D -->
         <div class="card card-hot">
             <div class="left">
-                <div class="icon">🧪</div>
+                <img class="app-icon" src="icons/slime-pop-512.png" alt="Slime Pop">
                 <div class="meta">
                     <div class="title">Slime Pop: 3D Squishy ASMR</div>
-                    <div class="desc">3D Yumuşak Slime • Baloncuk Patlatma &amp; Dilimleme • Gökkuşağı &amp; Simler • ASMR Sesleri</div>
-                    <span class="tag tag-green">YENİ ÇOCUK OYUNU (3.5 MB)</span>
+                    <div class="desc">3D Yumuşak Dokunmatik Slime • Baloncuk Patlatma • ASMR Geri Bildirim</div>
+                    <span class="tag tag-green">YENİ ÇOCUK OYUNU (4.6 MB)</span>
                 </div>
             </div>
             <a href="apks/13-SlimePop.apk" class="btn-down" download>İndir</a>
         </div>
 
-        <!-- RESCUE DOG -->
-        <div class="card card-hot" style="border: 2px solid #f59e0b; box-shadow: 0 0 20px rgba(245, 158, 11, 0.25);">
-            <div class="left">
-                <div class="icon" style="background: #1e293b; border: 1.5px solid #f59e0b;">🐶</div>
-                <div class="meta">
-                    <div class="title" style="color: #fbbf24;">Rescue Dog: Draw to Save (V2.0)</div>
-                    <div class="desc">40+ Seviye + Sonsuz Mod • 2D Boids Arı Sürüsü Simülasyonu • Kostüm &amp; Şapka Mağazası • 60/120 FPS Akıcı</div>
-                    <span class="tag tag-gold">MARKET 1. ÖNCELİK (4.7 MB)</span>
-                </div>
-            </div>
-            <a href="apks/10-RescueDog.apk" class="btn-down" style="background: linear-gradient(135deg, #f59e0b 0%, #d97706 100%);" download>İndir</a>
-        </div>
-
-        <!-- TILE CASO -->
-        <div class="card card-hot">
-            <div class="left">
-                <div class="icon">🧩</div>
-                <div class="meta">
-                    <div class="title">Tile Caso: Slide &amp; Match</div>
-                    <div class="desc">İtalyan Brainrot Eşleme • Digitar Logosu • Rahatlatıcı Akustik Müzik &amp; Sesler</div>
-                    <span class="tag tag-green">FAVORİ OYUN (4.5 MB)</span>
-                </div>
-            </div>
-            <a href="apks/6-TileCaso.apk" class="btn-down" download>İndir</a>
-        </div>
-
         <!-- ARROW PIN (aa STYLE) -->
         <div class="card card-hot">
             <div class="left">
-                <div class="icon">🎯</div>
+                <img class="app-icon" src="icons/arrow-pin-512.png" alt="Arrow Pin">
                 <div class="meta">
                     <div class="title">Arrow Pin: Spin &amp; Tap</div>
-                    <div class="desc">Klasik "aa" İğne Fırlatma • 40 Aşamalı Bölüm • Kalimba Ritmi • Obsidian Stüdyo Giriş</div>
-                    <span class="tag tag-green">YENİ OYUN (3.7 MB)</span>
+                    <div class="desc">Klasik "aa" İğne Fırlatma • Hassas Dokunmatik • Kalimba Ritmi • 40 Seviye</div>
+                    <span class="tag tag-green">YENİ BULMACA (4.7 MB)</span>
                 </div>
             </div>
             <a href="apks/8-ArrowPin.apk" class="btn-down" download>İndir</a>
         </div>
 
-    </div>
-
-    <!-- 2. BÖLÜM: ÜLKEYE ÖZEL RESMİ PİYANGO & LOTO UYGULAMALARI -->
-    <div class="section-title">🎰 Ülkeye Özel Resmi Piyango &amp; Loto (AI Destekli)</div>
-    <div class="grid">
-
-        <!-- TÜRKİYE -->
-        <div class="card card-lotto">
-            <div class="left">
-                <div class="icon">🇹🇷</div>
-                <div class="meta">
-                    <div class="title">Milli Piyango &amp; Sayısal Loto</div>
-                    <div class="desc">Sayısal, Süper Loto, On Numara, Şans Topu &amp; MP Özel Logolu • Canlı Çekiliş &amp; AI Robot</div>
-                    <span class="tag tag-gold">TÜRKİYE • ÖZEL LOGOLU (3.5 MB)</span>
-                </div>
-            </div>
-            <a href="apks/9-MilliPiyangoSonuc.apk" class="btn-down" download>İndir</a>
-        </div>
-
-        <!-- USA -->
-        <div class="card card-lotto">
-            <div class="left">
-                <div class="icon">🇺🇸</div>
-                <div class="meta">
-                    <div class="title">USA Lotto: Powerball &amp; Mega</div>
-                    <div class="desc">Draw Results &amp; Check • $485M Jackpot • AI Lucky Numbers • Reklam Kilidi</div>
-                    <span class="tag tag-gold">UNITED STATES (4.4 MB)</span>
-                </div>
-            </div>
-            <a href="apks/11-USALotto.apk" class="btn-down" download>İndir</a>
-        </div>
-
-        <!-- GERMANY -->
-        <div class="card card-lotto">
-            <div class="left">
-                <div class="icon">🇩🇪</div>
-                <div class="meta">
-                    <div class="title">DE Lotto: 6aus49 &amp; EuroJackpot</div>
-                    <div class="desc">Ziehungszahlen &amp; Quoten • KI Glückszahlen • Schein-Prüfer • VIP Pass</div>
-                    <span class="tag tag-gold">DEUTSCHLAND (4.4 MB)</span>
-                </div>
-            </div>
-            <a href="apks/12-DELotto.apk" class="btn-down" download>İndir</a>
-        </div>
-
-    </div>
-
-    <!-- 3. BÖLÜM: PUZZLE & ARCADE OYUNLARI -->
-    <div class="section-title">🕹️ Arcade &amp; Puzzle Oyunları (Sonraki Karakter Önizlemeli)</div>
-    <div class="grid">
-
-        <!-- STRATA 2048 -->
+        <!-- TILE CASO -->
         <div class="card card-hot">
             <div class="left">
-                <div class="icon">💎</div>
+                <img class="app-icon" src="icons/tile-caso-512.png" alt="Tile Caso">
                 <div class="meta">
-                    <div class="title">Strata 2048: Merge &amp; Reach 2048</div>
-                    <div class="desc">Klasik 2048 Kaydır &amp; Birleştir • Çekiç, Geri Al, Karıştır Güçleri • Dopamin Sesleri</div>
-                    <span class="tag tag-green">YENİ 2048 BULMACA (4.4 MB)</span>
+                    <div class="title">Tile Caso: Slide &amp; Match</div>
+                    <div class="desc">Akdeniz Seramik Karoları • Rahatlatıcı Müzik &amp; Sesler • Dokunmatik Bulmaca</div>
+                    <span class="tag tag-green">FAVORİ BULMACA (4.5 MB)</span>
                 </div>
             </div>
-            <a href="apks/4-StrataMerge.apk" class="btn-down" download>İndir</a>
+            <a href="apks/6-TileCaso.apk" class="btn-down" download>İndir</a>
+        </div>
+
+    </div>
+
+    <!-- 2. BÖLÜM: ARCADE VE BULMACALAR -->
+    <div class="section-title">🕹️ Arcade &amp; Mantık Oyunları</div>
+    <div class="grid">
+
+        <!-- CIRCUIT LOGIC -->
+        <div class="card">
+            <div class="left">
+                <img class="app-icon" src="icons/circuit-logic-512.png" alt="Circuit Logic">
+                <div class="meta">
+                    <div class="title">Circuit Logic - Grid Puzzle</div>
+                    <div class="desc">Elektrik Devresi Mantık Izgarası • Anında İpucu • Neon Akımlar</div>
+                    <span class="tag tag-blue">MANTIK BULMACASI (4.9 MB)</span>
+                </div>
+            </div>
+            <a href="apks/2-CircuitLogic.apk" class="btn-down" download>İndir</a>
         </div>
 
         <!-- NEON BLOCK BLAST -->
         <div class="card">
             <div class="left">
-                <div class="icon">🟦</div>
+                <img class="app-icon" src="icons/neon-block-512.png" alt="Neon Block Blast">
                 <div class="meta">
                     <div class="title">Neon Block Blast</div>
-                    <div class="desc">Gelecek 3 Blok Önizlemeli • Işıltılı Neon Izgara • Kombo Patlamaları</div>
+                    <div class="desc">3 Blok Önizlemeli Izgara • Işıltılı Neon Patlama • Kombo Efektleri</div>
                     <span class="tag tag-blue">BLOK PUZZLE (4.4 MB)</span>
                 </div>
             </div>
             <a href="apks/3-NeonBlockBlast.apk" class="btn-down" download>İndir</a>
         </div>
 
-        <!-- CIRCUIT LOGIC -->
+        <!-- STRATA MERGE -->
         <div class="card">
             <div class="left">
-                <div class="icon">⚡</div>
+                <img class="app-icon" src="icons/merge-oyun-512.png" alt="Strata Merge">
                 <div class="meta">
-                    <div class="title">Circuit Logic - Grid Puzzle</div>
-                    <div class="desc">Elektrik Devresi Mantık Bulmacası • Neon Akımlar • Zihin Geliştirici</div>
-                    <span class="tag tag-blue">LOGIC PUZZLE (4.5 MB)</span>
+                    <div class="title">Strata Merge: 2048 Gems</div>
+                    <div class="desc">Mücevher &amp; Kristal Birleştirme • Çekiç &amp; Karıştır Güçleri • Akıcı 2048</div>
+                    <span class="tag tag-blue">2048 MERGE (4.7 MB)</span>
                 </div>
             </div>
-            <a href="apks/2-CircuitLogic.apk" class="btn-down" download>İndir</a>
+            <a href="apks/4-StrataMerge.apk" class="btn-down" download>İndir</a>
         </div>
 
         <!-- NEON RICOCHET -->
         <div class="card">
             <div class="left">
-                <div class="icon">🎯</div>
+                <img class="app-icon" src="icons/neon-ricochet-512.png" alt="Neon Ricochet">
                 <div class="meta">
                     <div class="title">Neon Ricochet: Aim &amp; Pop</div>
-                    <div class="desc">Gelişmiş Açı Yansıtma • Seken Işın Fiziği • Hedef Vurma Aksiyonu</div>
-                    <span class="tag tag-blue">ARCADE SHOOTER (4.4 MB)</span>
+                    <div class="desc">Seken Enerji Topu Fiziği • Neon Tuğlalar • Hassas Açı Yansıtma</div>
+                    <span class="tag tag-blue">ARCADE SHOOTER (4.1 MB)</span>
                 </div>
             </div>
             <a href="apks/5-NeonRicochet.apk" class="btn-down" download>İndir</a>
@@ -338,11 +312,11 @@
         <!-- SKY HOPPER -->
         <div class="card">
             <div class="left">
-                <div class="icon">🏃</div>
+                <img class="app-icon" src="icons/sky-hopper-512.png" alt="Sky Hopper">
                 <div class="meta">
                     <div class="title">Sky Hopper: Endless Dash</div>
-                    <div class="desc">Hızlı Refleks &amp; Zıplama • Sonsuz Gökyüzü Parkuru • Digitar Efektleri</div>
-                    <span class="tag tag-blue">ENDLESS RUNNER (4.4 MB)</span>
+                    <div class="desc">Skebob Tavşanı • Sonsuz Gökyüzü &amp; Bulut Parkuru • Hızlı Refleks</div>
+                    <span class="tag tag-blue">SONSUZ KOŞU (4.2 MB)</span>
                 </div>
             </div>
             <a href="apks/7-SkyHopper.apk" class="btn-down" download>İndir</a>
@@ -351,11 +325,11 @@
         <!-- BÜTÇE DEFTERİ -->
         <div class="card">
             <div class="left">
-                <div class="icon">📊</div>
+                <img class="app-icon" src="icons/butce-defteri-512.png" alt="Bütçe Defteri">
                 <div class="meta">
                     <div class="title">Bütçe Defteri: Gelir Gider</div>
-                    <div class="desc">Kişisel Finans • Harcama Kategorileri • Grafiksel Bütçe Raporları</div>
-                    <span class="tag tag-blue">FİNANS (22.5 MB)</span>
+                    <div class="desc">Kişisel Finans • Harcama Kategorileri • Grafiksel Raporlama • Güvenli</div>
+                    <span class="tag tag-purple">FİNANS &amp; ARAÇ (3.2 MB)</span>
                 </div>
             </div>
             <a href="apks/1-ButceDefteri.apk" class="btn-down" download>İndir</a>
@@ -363,9 +337,67 @@
 
     </div>
 
+    <!-- 3. BÖLÜM: LOTO VE KUPON KONTROL -->
+    <div class="section-title">🎰 Loto &amp; Çekiliş Takip Araçları (Optik Form Kupon)</div>
+    <div class="grid">
+
+        <!-- TÜRKİYE -->
+        <div class="card card-lotto">
+            <div class="left">
+                <img class="app-icon" src="icons/milli-piyango-512.png" alt="Milli Piyango">
+                <div class="meta">
+                    <div class="title">Milli Piyango &amp; Çekiliş Sonuçları</div>
+                    <div class="desc">Sayısal Loto, Süper Loto, On Numara, Şans Topu • Optik Form Kupon Kontrolü</div>
+                    <span class="tag tag-gold">TÜRKİYE (3.3 MB)</span>
+                </div>
+            </div>
+            <a href="apks/9-MilliPiyangoSonuc.apk" class="btn-down btn-gold" download>İndir</a>
+        </div>
+
+        <!-- USA -->
+        <div class="card card-lotto">
+            <div class="left">
+                <img class="app-icon" src="icons/us-lotto-512.png" alt="USA Lotto">
+                <div class="meta">
+                    <div class="title">USA Lotto: Ticket Checker</div>
+                    <div class="desc">Powerball &amp; Mega Millions Sonuçları • Optik Form Kupon Karşılaştırma</div>
+                    <span class="tag tag-gold">UNITED STATES (4.5 MB)</span>
+                </div>
+            </div>
+            <a href="apks/11-USALotto.apk" class="btn-down btn-gold" download>İndir</a>
+        </div>
+
+        <!-- GERMANY -->
+        <div class="card card-lotto">
+            <div class="left">
+                <img class="app-icon" src="icons/de-lotto-512.png" alt="DE Lotto">
+                <div class="meta">
+                    <div class="title">DE Lotto: Tippschein Check</div>
+                    <div class="desc">Lotto 6aus49 &amp; EuroJackpot Ziehungszahlen • Schein-Prüfer Form</div>
+                    <span class="tag tag-gold">DEUTSCHLAND (4.7 MB)</span>
+                </div>
+            </div>
+            <a href="apks/12-DELotto.apk" class="btn-down btn-gold" download>İndir</a>
+        </div>
+
+        <!-- GLOBAL -->
+        <div class="card card-lotto">
+            <div class="left">
+                <img class="app-icon" src="icons/global-lotto-512.png" alt="Global Lotto">
+                <div class="meta">
+                    <div class="title">Global Lotto: World Checker</div>
+                    <div class="desc">Dünya Çapında Çekiliş Sonuçları ve Çoklu Kupon Karşılaştırma Aracı</div>
+                    <span class="tag tag-gold">GLOBAL (2.8 MB)</span>
+                </div>
+            </div>
+            <a href="apks/14-GlobalLotto.apk" class="btn-down btn-gold" download>İndir</a>
+        </div>
+
+    </div>
+
     <div class="footer">
         © 2026 Simeal Apps &amp; Digitar Games • Tüm Hakları Saklıdır.<br>
-        AdMob Reklam Birimleri Aktif • Yayın ve Test Sürümü
+        v2 Özel Karakter Simgeleri Aktif • Güvenli Doğrudan Kurulum
     </div>
 
 </body>
