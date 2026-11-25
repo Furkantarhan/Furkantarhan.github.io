@@ -1,499 +1,479 @@
 <!DOCTYPE html>
 <html lang="tr">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>Simeal Apps & Digitar Games | Mobil İndirme Merkezi</title>
-    <style>
-        * { box-sizing: border-box; margin: 0; padding: 0; }
-        body {
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-            background: linear-gradient(135deg, #090d16 0%, #020408 100%);
-            color: #f1f5f9;
-            min-height: 100vh;
-            padding: 24px 14px 60px;
-        }
-        .header {
-            text-align: center;
-            padding: 10px 0 24px;
-        }
-        .badge {
-            display: inline-block;
-            background: linear-gradient(90deg, #10b981, #059669);
-            color: white;
-            font-size: 11px;
-            font-weight: 800;
-            padding: 6px 14px;
-            border-radius: 20px;
-            letter-spacing: 1.5px;
-            margin-bottom: 12px;
-            box-shadow: 0 4px 12px rgba(16, 185, 129, 0.3);
-        }
-        h1 {
-            font-size: 26px;
-            font-weight: 900;
-            background: linear-gradient(90deg, #38bdf8, #818cf8, #c084fc);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            margin-bottom: 6px;
-        }
-        .sub {
-            color: #94a3b8;
-            font-size: 14px;
-        }
-        .tip-box {
-            background: rgba(30, 41, 59, 0.6);
-            border: 1px solid rgba(56, 189, 248, 0.25);
-            border-radius: 16px;
-            padding: 14px 18px;
-            margin-bottom: 24px;
-            font-size: 13px;
-            color: #cbd5e1;
-            line-height: 1.5;
-            max-width: 560px;
-            margin-left: auto;
-            margin-right: auto;
-            backdrop-filter: blur(8px);
-        }
-        .tip-box strong { color: #38bdf8; }
-        .section-title {
-            max-width: 560px;
-            margin: 28px auto 12px;
-            font-size: 17px;
-            font-weight: 800;
-            color: #38bdf8;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            padding-left: 4px;
-        }
-        .grid {
-            display: grid;
-            grid-template-columns: 1fr;
-            gap: 14px;
-            max-width: 560px;
-            margin: 0 auto;
-        }
-        .card {
-            background: rgba(30, 41, 59, 0.7);
-            border: 1px solid #334155;
-            border-radius: 18px;
-            padding: 14px 16px;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            transition: all 0.2s ease;
-            box-shadow: 0 4px 14px rgba(0,0,0,0.25);
-        }
-        .card:active {
-            transform: scale(0.98);
-        }
-        .card-hot {
-            border: 1.5px solid #10b981;
-            background: linear-gradient(135deg, rgba(30, 41, 59, 0.85) 0%, rgba(19, 43, 40, 0.85) 100%);
-            box-shadow: 0 4px 20px rgba(16, 185, 129, 0.15);
-        }
-        .card-priority {
-            border: 2px solid #f59e0b;
-            background: linear-gradient(135deg, rgba(30, 41, 59, 0.9) 0%, rgba(43, 35, 19, 0.9) 100%);
-            box-shadow: 0 0 25px rgba(245, 158, 11, 0.25);
-        }
-        .card-lotto {
-            border: 1.5px solid #f59e0b;
-            background: linear-gradient(135deg, rgba(30, 41, 59, 0.85) 0%, rgba(43, 35, 19, 0.85) 100%);
-        }
-        .left {
-            display: flex;
-            align-items: center;
-            gap: 14px;
-            flex: 1;
-            min-width: 0;
-        }
-        .app-icon {
-            width: 58px;
-            height: 58px;
-            border-radius: 14px;
-            object-fit: cover;
-            flex-shrink: 0;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.45);
-            border: 1px solid rgba(255,255,255,0.12);
-            background: #1e293b;
-        }
-        .meta {
-            min-width: 0;
-            flex: 1;
-        }
-        .title {
-            font-size: 15px;
-            font-weight: 800;
-            color: #ffffff;
-            margin-bottom: 3px;
-            white-space: nowrap;
-            overflow: hidden;
-            text-overflow: ellipsis;
-        }
-        .desc {
-            font-size: 12px;
-            color: #94a3b8;
-            line-height: 1.35;
-        }
-        .tag {
-            display: inline-block;
-            font-size: 10px;
-            font-weight: 800;
-            padding: 3px 8px;
-            border-radius: 6px;
-            margin-top: 5px;
-            letter-spacing: 0.3px;
-        }
-        .tag-green { background: #064e3b; color: #34d399; }
-        .tag-gold { background: #451a03; color: #fbbf24; }
-        .tag-blue { background: #0c4a6e; color: #38bdf8; }
-        .tag-purple { background: #3b0764; color: #c084fc; }
-        .btn-down {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            gap: 6px;
-            background: linear-gradient(135deg, #10b981 0%, #059669 100%);
-            color: white;
-            text-decoration: none;
-            font-weight: 800;
-            font-size: 13px;
-            padding: 10px 18px;
-            border-radius: 12px;
-            flex-shrink: 0;
-            margin-left: 10px;
-            box-shadow: 0 4px 12px rgba(16, 185, 129, 0.35);
-        }
-        .btn-down:active {
-            opacity: 0.85;
-            transform: scale(0.96);
-        }
-        .btn-gold {
-            background: linear-gradient(135deg, #f59e0b 0%, #d97706 100%);
-            box-shadow: 0 4px 12px rgba(245, 158, 11, 0.35);
-        }
-        .footer {
-            text-align: center;
-            margin-top: 48px;
-            font-size: 12px;
-            color: #64748b;
-            line-height: 1.6;
-        }
-    </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Digitar Games &amp; Simeal Apps — APK İndirme Merkezi</title>
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;background:#0a0a09;color:#ece8dc;min-height:100vh;padding:24px 14px 64px}
+.wrap{max-width:680px;margin:0 auto}
+.header{text-align:center;padding:8px 0 20px}
+.badge{display:inline-block;background:rgba(198,242,78,.14);border:1px solid rgba(198,242,78,.45);color:#c6f24e;font-size:11px;font-weight:700;padding:5px 13px;border-radius:99px;letter-spacing:1.2px;margin-bottom:10px}
+h1{font-size:26px;font-weight:700;letter-spacing:-.03em;margin-bottom:6px}
+.sub{color:#8d897c;font-size:14px}
+.bar{display:flex;gap:8px;flex-wrap:wrap;margin:18px 0 8px}
+.search{flex:1;min-width:180px;background:#141412;border:1px solid rgba(236,232,220,.16);color:#ece8dc;border-radius:12px;padding:10px 14px;font-size:14px;outline:none}
+.search:focus{border-color:#c6f24e}
+.tabs{display:flex;gap:6px;flex-wrap:wrap;margin:10px 0 18px}
+.tab{background:#141412;border:1px solid rgba(236,232,220,.14);color:#c3bfb2;padding:7px 13px;border-radius:99px;font-size:12.5px;font-weight:600;cursor:pointer}
+.tab.active{background:#c6f24e;color:#0a0a09;border-color:#c6f24e}
+.section-title{margin:24px 0 10px;font-size:15px;font-weight:700;color:#c6f24e;padding-left:2px}
+.grid{display:grid;grid-template-columns:1fr;gap:12px}
+.card{background:#141412;border:1px solid rgba(236,232,220,.14);border-radius:16px;padding:13px 14px;display:flex;align-items:center;justify-content:space-between;gap:12px;transition:border-color .18s}
+.card:hover{border-color:rgba(198,242,78,.5)}
+.left{display:flex;align-items:center;gap:13px;flex:1;min-width:0}
+.app-icon{width:54px;height:54px;border-radius:13px;object-fit:cover;flex:none;background:#1b1b18;border:1px solid rgba(236,232,220,.12)}
+.meta{min-width:0;flex:1}
+.title{font-size:15px;font-weight:700;color:#ece8dc;margin-bottom:2px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.desc{font-size:12.5px;color:#c3bfb2;line-height:1.35}
+.tags{display:flex;gap:6px;flex-wrap:wrap;margin-top:6px}
+.tag{font-size:10.5px;font-weight:700;padding:2px 8px;border-radius:6px}
+.tag-cyan{background:rgba(94,231,255,.14);color:#5ee7ff;border:1px solid rgba(94,231,255,.35)}
+.tag-green{background:rgba(198,242,78,.14);color:#c6f24e;border:1px solid rgba(198,242,78,.35)}
+.tag-gold{background:rgba(251,191,36,.14);color:#fbbf24;border:1px solid rgba(251,191,36,.35)}
+.tag-mute{background:#1b1b18;color:#8d897c;border:1px solid rgba(236,232,220,.1)}
+.btn-down{background:#c6f24e;color:#0a0a09;text-decoration:none;font-weight:700;font-size:13px;padding:10px 15px;border-radius:99px;flex:none;white-space:nowrap}
+.btn-down:active{transform:scale(.96)}
+.footer{text-align:center;margin-top:40px;font-size:12px;color:#8d897c;line-height:1.6}
+.footer a{color:#c6f24e;text-decoration:none}
+</style>
 </head>
 <body>
-
-    <div class="header">
-        <div class="badge">DİGİTAR GAMES & SIMEAL APPS</div>
-        <h1>Mobil Oyun İndirme Merkezi</h1>
-        <p class="sub">Tüm oyunlar ve güncel v2 logoları ile yayına hazır!</p>
-    </div>
-
-    <div class="tip-box">
-        🚀 <strong>Yeni Özellik:</strong> <strong>Digitar STL Studio (3D Yazıcı &amp; STL Model Üretici)</strong> yayına alındı! Artık telefonunuzdan veya bilgisayarınızdan herhangi bir fotoğrafı/resmi yükleyip anında 3D katı STL modeli üretebilir ve 3D yazıcınızdan basabilirsiniz. Ayrıca tüm oyunlar güncel v2 logolarıyla yayındadır.
-    </div>
-
-        <!-- ÖZEL BÖLÜM: 3D YAZICI VE STL DÖNÜŞTÜRÜCÜ -->
-    <div class="section-title">🖨️ 3D Yazıcı &amp; STL Model Stüdyosu (Android APK &amp; Web)</div>
-    <div class="grid">
-        <div class="card card-priority" style="border: 2px solid #06b6d4; background: linear-gradient(135deg, rgba(30, 41, 59, 0.95) 0%, rgba(6, 78, 99, 0.45) 100%); box-shadow: 0 0 25px rgba(6, 182, 212, 0.35);">
-            <div class="left">
-                <img class="app-icon" src="icons/digitar_logo.png" alt="Digitar STL Studio" style="border: 1.5px solid rgba(6, 182, 212, 0.6); box-shadow: 0 0 15px rgba(6, 182, 212, 0.4);">
-                <div class="meta">
-                    <div class="title" style="color: #38bdf8; font-size: 15px;">Digitar STL Studio: 3D Yazıcı &amp; Çizim</div>
-                    <div class="desc">JPEG/PNG Fotoğraftan Katı 3D STL Modeli • Kamera &amp; Galeri Desteği • Anında 3D Dokunmatik Önizleme • Telefona STL Kaydet</div>
-                    <div style="display: flex; gap: 5px; flex-wrap: wrap; margin-top: 4px;">
-                        <span class="tag tag-gold" style="font-weight: 700;">ANDROID APK (10.4 MB)</span>
-                        <span class="tag" style="background: #083344; color: #22d3ee; border: 1px solid #06b6d4;">3D YAZICI UYUMLU</span>
-                        <span class="tag tag-green">TELEFON &amp; OFFLINE</span>
-                        <span class="tag tag-gold">DİGİTAR MOTORU</span>
-                    </div>
-                </div>
+<div class="wrap">
+  <div class="header">
+    <div class="badge">DİGİTAR GAMES &amp; SIMEAL APPS · 25.11.2026</div>
+    <h1>APK İndirme Merkezi (28 Uygulama)</h1>
+    <p class="sub">İmzalı release APK'lar · Doğrudan telefona kurulum için</p>
+  </div>
+  <div class="bar"><input class="search" id="q" type="search" placeholder="Uygulama ara (ör. Storm, Permit, Rocket, Rescue)..."></div>
+  <div class="tabs">
+    <button class="tab active" data-f="all">Tümü (28)</button>
+    <button class="tab" data-f="us">ABD Yerel (33–35)</button>
+    <button class="tab" data-f="newgames">Yeni Oyunlar (27–32)</button>
+    <button class="tab" data-f="regional">Bölgesel (18–26)</button>
+    <button class="tab" data-f="live">Yayında</button>
+  </div>
+  <div class="section-title" data-sec-head="us">🇺🇸 ABD Yerel Uygulamalar (33–35 · Yeni v2)</div>
+<div class="grid" data-sec-grid="us">
+        <div class="card" data-sec="us" data-q="us citizenship test prep 2025 (128 soru) &amp; 2008 (100 soru) uscis kartlar, sesli mulakat, widget yakinda · hazir">
+          <div class="left">
+            <img class="app-icon" src="icons/33-citizenship.png" alt="US Citizenship Test Prep" loading="lazy">
+            <div class="meta">
+              <div class="title">US Citizenship Test Prep</div>
+              <div class="desc">2025 (128 soru) &amp; 2008 (100 soru) USCIS kartlar, sesli mulakat, widget</div>
+              <div class="tags">
+                <span class="tag tag-cyan">Yakinda · Hazir</span>
+                <span class="tag tag-mute">v2 (1.0.1) · 4.6 MB</span>
+              </div>
             </div>
-            <div style="display: flex; flex-direction: column; gap: 6px; flex-shrink: 0; margin-left: 10px;">
-                <a href="apks/Digitar-STL-Studio.apk" class="btn-down btn-gold" style="font-weight: 700; padding: 10px 16px; font-size: 13px; text-align: center; text-decoration: none;" download>APK İndir (10.4 MB) 📲</a>
-                <a href="stl.html" class="btn-down" style="background: #0e304a; color: #38bdf8; font-size: 11px; padding: 6px 10px; border: 1px solid #0284c7; text-align: center; margin-left: 0; text-decoration: none;">Web Sürümü Aç 🚀</a>
-            </div>
+          </div>
+          <a href="apks/33-CitizenshipTest-v2.apk" class="btn-down" download>İndir ⬇</a>
         </div>
-
-        <!-- STL MAKER (NATIVE KOTLIN) -->
-        <div class="card card-priority" style="border: 2px solid #a855f7; background: linear-gradient(135deg, rgba(30, 41, 59, 0.95) 0%, rgba(88, 28, 135, 0.35) 100%); box-shadow: 0 0 25px rgba(168, 85, 247, 0.25);">
-            <div class="left">
-                <img class="app-icon" src="icons/digitar_logo.png" alt="STL Maker" style="border: 1.5px solid rgba(168, 85, 247, 0.6); box-shadow: 0 0 15px rgba(168, 85, 247, 0.4);">
-                <div class="meta">
-                    <div class="title" style="color: #c084fc; font-size: 15px;">STL Maker: 3D Print Model (Native Compose)</div>
-                    <div class="desc">Saf Kotlin Jetpack Compose Motoru • Katı Yükseklik Haritası • Hafif ve Hızlı • Dosya Yöneticisi Entegre</div>
-                    <div style="display: flex; gap: 5px; flex-wrap: wrap; margin-top: 4px;">
-                        <span class="tag tag-purple" style="font-weight: 700;">YEREL KOTLIN APK (3.8 MB)</span>
-                        <span class="tag" style="background: #3b0764; color: #d8b4fe; border: 1px solid #a855f7;">JETPACK COMPOSE</span>
-                        <span class="tag tag-green">ULTRA HAFİF</span>
-                    </div>
-                </div>
+        <div class="card" data-sec="us" data-q="permit test practice &amp; signs ca/ny/pa eyalet surucu belgesi pratigi, 40 mutcd isareti, widget yakinda · hazir">
+          <div class="left">
+            <img class="app-icon" src="icons/34-permit.png" alt="Permit Test Practice &amp; Signs" loading="lazy">
+            <div class="meta">
+              <div class="title">Permit Test Practice &amp; Signs</div>
+              <div class="desc">CA/NY/PA eyalet surucu belgesi pratigi, 40 MUTCD isareti, widget</div>
+              <div class="tags">
+                <span class="tag tag-cyan">Yakinda · Hazir</span>
+                <span class="tag tag-mute">v2 (1.0.1) · 4.3 MB</span>
+              </div>
             </div>
-            <div style="display: flex; flex-direction: column; gap: 6px; flex-shrink: 0; margin-left: 10px;">
-                <a href="apks/20-STLMaker.apk" class="btn-down" style="background: linear-gradient(135deg, #a855f7 0%, #7e22ce 100%); box-shadow: 0 4px 14px rgba(168, 85, 247, 0.4); text-align: center; padding: 10px 16px; font-size: 13px; font-weight: 700; text-decoration: none;" download>APK İndir (3.8 MB) 📲</a>
-            </div>
+          </div>
+          <a href="apks/34-PermitTest-v2.apk" class="btn-down" download>İndir ⬇</a>
         </div>
-    </div>
-
-<!-- 1. BÖLÜM: YENİ VE ÖNE ÇIKANLAR -->
-    <div class="section-title">🌟 Yeni & Öne Çıkan Başyapıtlar</div>
-    <div class="grid">
-
-        <!-- RESCUE DOG -->
-        <div class="card card-priority">
-            <div class="left">
-                <img class="app-icon" src="icons/rescue-dog-512.png" alt="Rescue Dog">
-                <div class="meta">
-                    <div class="title" style="color: #fbbf24;">Rescue Dog: Draw to Save</div>
-                    <div class="desc">Kızgın Arı Sürüsü Simülasyonu • Çizgi Fiziği • Çoklu Dil Desteği • 120 FPS</div>
-                    <span class="tag tag-gold">MARKET 1. ÖNCELİK (4.7 MB)</span>
-                </div>
+        <div class="card" data-sec="us" data-q="storm alerts us: weather canli nws (weather.gov) firtina uyarilari, 7 gun/saatlik tahmin, widget yakinda · hazir">
+          <div class="left">
+            <img class="app-icon" src="icons/35-storm.png" alt="Storm Alerts US: Weather" loading="lazy">
+            <div class="meta">
+              <div class="title">Storm Alerts US: Weather</div>
+              <div class="desc">Canli NWS (weather.gov) firtina uyarilari, 7 gun/saatlik tahmin, widget</div>
+              <div class="tags">
+                <span class="tag tag-cyan">Yakinda · Hazir</span>
+                <span class="tag tag-mute">v2 (1.0.1) · 5.2 MB</span>
+              </div>
             </div>
-            <a href="apks/10-RescueDog.apk" class="btn-down btn-gold" download>İndir</a>
+          </div>
+          <a href="apks/35-StormAlerts-v2.apk" class="btn-down" download>İndir ⬇</a>
         </div>
-
-        <!-- SLIME POP 3D -->
-        <div class="card card-hot">
-            <div class="left">
-                <img class="app-icon" src="icons/slime-pop-512.png" alt="Slime Pop">
-                <div class="meta">
-                    <div class="title">Slime Pop: 3D Squishy ASMR</div>
-                    <div class="desc">3D Yumuşak Dokunmatik Slime • Baloncuk Patlatma • ASMR Geri Bildirim</div>
-                    <span class="tag tag-green">YENİ ÇOCUK OYUNU (4.6 MB)</span>
-                </div>
+</div><div class="section-title" data-sec-head="newgames">🚀 Yeni 3B Stüdyo Oyunları (27–32 · Kuyrukta)</div>
+<div class="grid" data-sec-grid="newgames">
+        <div class="card" data-sec="newgames" data-q="rocket rush: orbit escape kaptan miso ile 60 fps yorunge arcade, 5 bolge, gunluk gorevler yakinda · hazir">
+          <div class="left">
+            <img class="app-icon" src="icons/27-rocket-rush.png" alt="Rocket Rush: Orbit Escape" loading="lazy">
+            <div class="meta">
+              <div class="title">Rocket Rush: Orbit Escape</div>
+              <div class="desc">Kaptan Miso ile 60 FPS yorunge arcade, 5 bolge, gunluk gorevler</div>
+              <div class="tags">
+                <span class="tag tag-cyan">Yakinda · Hazir</span>
+                <span class="tag tag-mute">v1 (1.0.0) · 3.8 MB</span>
+              </div>
             </div>
-            <a href="apks/13-SlimePop.apk" class="btn-down" download>İndir</a>
+          </div>
+          <a href="apks/27-RocketRush-v1.apk" class="btn-down" download>İndir ⬇</a>
         </div>
-
-        <!-- ARROW PIN (aa STYLE) -->
-        <div class="card card-hot">
-            <div class="left">
-                <img class="app-icon" src="icons/arrow-pin-512.png" alt="Arrow Pin">
-                <div class="meta">
-                    <div class="title">Arrow Pin: Spin &amp; Tap</div>
-                    <div class="desc">Klasik "aa" İğne Fırlatma • Hassas Dokunmatik • Kalimba Ritmi • 40 Seviye</div>
-                    <span class="tag tag-green">YENİ BULMACA (4.7 MB)</span>
-                </div>
+        <div class="card" data-sec="newgames" data-q="aqua sort: neon lab prof. splash ile neon sivi siralama, 5 bolum, akilli ipucu yakinda · hazir">
+          <div class="left">
+            <img class="app-icon" src="icons/28-aqua-sort.png" alt="Aqua Sort: Neon Lab" loading="lazy">
+            <div class="meta">
+              <div class="title">Aqua Sort: Neon Lab</div>
+              <div class="desc">Prof. Splash ile neon sivi siralama, 5 bolum, akilli ipucu</div>
+              <div class="tags">
+                <span class="tag tag-cyan">Yakinda · Hazir</span>
+                <span class="tag tag-mute">v1 (1.0.0) · 3.7 MB</span>
+              </div>
             </div>
-            <a href="apks/8-ArrowPin.apk" class="btn-down" download>İndir</a>
+          </div>
+          <a href="apks/28-AquaSort-v1.apk" class="btn-down" download>İndir ⬇</a>
         </div>
-
-        <!-- ARROW OUT (NEW PUZZLE) -->
-        <div class="card card-hot" style="border: 1.5px solid #38bdf8;">
-            <div class="left">
-                <img class="app-icon" src="icons/arrow-escape-512.png" alt="Arrow Out">
-                <div class="meta">
-                    <div class="title" style="color: #38bdf8;">Arrow Out: Tap Puzzle</div>
-                    <div class="desc">3D Ok Kaçış Bulmacası • Engellerden Kurtul • Hızlı &amp; Zeka Geliştirici</div>
-                    <span class="tag tag-blue">YENİ OK BULMACASI (4.7 MB)</span>
-                </div>
+        <div class="card" data-sec="newgames" data-q="hexa stack: prism merge prism bot ile 19 hucreli altigen yigin birlestirme &amp; zincir patlama yakinda · hazir">
+          <div class="left">
+            <img class="app-icon" src="icons/29-hexa-stack.png" alt="Hexa Stack: Prism Merge" loading="lazy">
+            <div class="meta">
+              <div class="title">Hexa Stack: Prism Merge</div>
+              <div class="desc">Prism Bot ile 19 hucreli altigen yigin birlestirme &amp; zincir patlama</div>
+              <div class="tags">
+                <span class="tag tag-cyan">Yakinda · Hazir</span>
+                <span class="tag tag-mute">v1 (1.0.0) · 3.8 MB</span>
+              </div>
             </div>
-            <a href="apks/16-ArrowOut.apk" class="btn-down" download>İndir</a>
+          </div>
+          <a href="apks/29-HexaStack-v1.apk" class="btn-down" download>İndir ⬇</a>
         </div>
-
-        <!-- RIDGE RUSH -->
-        <div class="card card-hot" style="border: 1.5px solid #f59e0b;">
-            <div class="left">
-                <img class="app-icon" src="icons/hill-drive-512.png" alt="Ridge Rush">
-                <div class="meta">
-                    <div class="title" style="color: #f59e0b;">Ridge Rush: Hill Drive</div>
-                    <div class="desc">Tepe Tırmanma Araba Oyunu • Süspansiyon Fiziği • Garaj &amp; Yükseltmeler • Hayalet Yarış</div>
-                    <span class="tag tag-blue">YENİ ARAÇ OYUNU (4.9 MB)</span>
-                </div>
+        <div class="card" data-sec="newgames" data-q="planet drop: gravity merge fizik tabanli gezegen dusurme &amp; yildiz evrimi (ads.kt v2) yakinda · hazir">
+          <div class="left">
+            <img class="app-icon" src="icons/30-planet-drop.png" alt="Planet Drop: Gravity Merge" loading="lazy">
+            <div class="meta">
+              <div class="title">Planet Drop: Gravity Merge</div>
+              <div class="desc">Fizik tabanli gezegen dusurme &amp; yildiz evrimi (Ads.kt v2)</div>
+              <div class="tags">
+                <span class="tag tag-cyan">Yakinda · Hazir</span>
+                <span class="tag tag-mute">v2 (1.0.1) · 3.5 MB</span>
+              </div>
             </div>
-            <a href="apks/19-RidgeRush.apk" class="btn-down" download>İndir</a>
+          </div>
+          <a href="apks/30-PlanetDrop-v2.apk" class="btn-down" download>İndir ⬇</a>
         </div>
-
-        <!-- BOLT OUT -->
-        <div class="card card-hot" style="border: 1.5px solid #38bdf8;">
-            <div class="left">
-                <img class="app-icon" src="icons/screw-pin-512.png" alt="Bolt Out">
-                <div class="meta">
-                    <div class="title" style="color: #38bdf8;">Bolt Out: Screw Puzzle</div>
-                    <div class="desc">Vida Sökme Fizik Bulmacası • Düşen Tahtalar • Sonsuz Bölüm</div>
-                    <span class="tag tag-blue">YENİ VİDA BULMACASI (5.3 MB)</span>
-                </div>
+        <div class="card" data-sec="newgames" data-q="knot lab: neon untangle duzlemsel neon dugum cozme mantik bulmacasi (ads.kt v2) yakinda · hazir">
+          <div class="left">
+            <img class="app-icon" src="icons/31-knot-lab.png" alt="Knot Lab: Neon Untangle" loading="lazy">
+            <div class="meta">
+              <div class="title">Knot Lab: Neon Untangle</div>
+              <div class="desc">Duzlemsel neon dugum cozme mantik bulmacasi (Ads.kt v2)</div>
+              <div class="tags">
+                <span class="tag tag-cyan">Yakinda · Hazir</span>
+                <span class="tag tag-mute">v2 (1.0.1) · 3.5 MB</span>
+              </div>
             </div>
-            <a href="apks/18-BoltOut.apk" class="btn-down" download>İndir</a>
+          </div>
+          <a href="apks/31-KnotLab-v2.apk" class="btn-down" download>İndir ⬇</a>
         </div>
-
-        <!-- PARK OUT -->
-        <div class="card card-hot" style="border: 1.5px solid #38bdf8;">
-            <div class="left">
-                <img class="app-icon" src="icons/traffic-escape-512.png" alt="Park Out">
-                <div class="meta">
-                    <div class="title" style="color: #38bdf8;">Park Out: Car Escape</div>
-                    <div class="desc">Otoparktan Kaçış Bulmacası • Sıkışık Arabaları Çıkar • Sonsuz Bölüm</div>
-                    <span class="tag tag-blue">YENİ PARK BULMACASI (5.0 MB)</span>
-                </div>
+        <div class="card" data-sec="newgames" data-q="lumen grid: light up puzzle kristal akari mantik bulmacasi &amp; gunluk 8x8 tahta (ads.kt v2) yakinda · hazir">
+          <div class="left">
+            <img class="app-icon" src="icons/32-lumen-grid.png" alt="Lumen Grid: Light Up Puzzle" loading="lazy">
+            <div class="meta">
+              <div class="title">Lumen Grid: Light Up Puzzle</div>
+              <div class="desc">Kristal Akari mantik bulmacasi &amp; gunluk 8x8 tahta (Ads.kt v2)</div>
+              <div class="tags">
+                <span class="tag tag-cyan">Yakinda · Hazir</span>
+                <span class="tag tag-mute">v2 (1.0.1) · 3.5 MB</span>
+              </div>
             </div>
-            <a href="apks/17-ParkOut.apk" class="btn-down" download>İndir</a>
+          </div>
+          <a href="apks/32-LumenGrid-v2.apk" class="btn-down" download>İndir ⬇</a>
         </div>
-
-        <!-- TILE CASO -->
-        <div class="card card-hot">
-            <div class="left">
-                <img class="app-icon" src="icons/tile-caso-512.png" alt="Tile Caso">
-                <div class="meta">
-                    <div class="title">Tile Caso: Slide &amp; Match</div>
-                    <div class="desc">Akdeniz Seramik Karoları • Rahatlatıcı Müzik &amp; Sesler • Dokunmatik Bulmaca</div>
-                    <span class="tag tag-green">FAVORİ BULMACA (4.5 MB)</span>
-                </div>
+</div><div class="section-title" data-sec-head="regional">🌍 Bölgesel & Yardımcı Uygulamalar (18–26)</div>
+<div class="grid" data-sec-grid="regional">
+        <div class="card" data-sec="regional" data-q="food recall alerts usa abd openfda canli gida geri cagirma ve alerjen uyarilari incelemede">
+          <div class="left">
+            <img class="app-icon" src="icons/22-food-recall.png" alt="Food Recall Alerts USA" loading="lazy">
+            <div class="meta">
+              <div class="title">Food Recall Alerts USA</div>
+              <div class="desc">ABD openFDA canli gida geri cagirma ve alerjen uyarilari</div>
+              <div class="tags">
+                <span class="tag tag-gold">Incelemede</span>
+                <span class="tag tag-mute">v1 (1.0.0) · 3.9 MB</span>
+              </div>
             </div>
-            <a href="apks/6-TileCaso.apk" class="btn-down" download>İndir</a>
+          </div>
+          <a href="apks/22-FoodRecall-v1.apk" class="btn-down" download>İndir ⬇</a>
         </div>
-
-    </div>
-
-    <!-- 2. BÖLÜM: ARCADE VE BULMACALAR -->
-    <div class="section-title">🕹️ Arcade &amp; Mantık Oyunları</div>
-    <div class="grid">
-
-        <!-- CIRCUIT LOGIC -->
-        <div class="card">
-            <div class="left">
-                <img class="app-icon" src="icons/circuit-logic-512.png" alt="Circuit Logic">
-                <div class="meta">
-                    <div class="title">Circuit Logic Grid</div>
-                    <div class="desc">Elektrik Devresi Mantık Izgarası • Anında İpucu • Neon Akımlar</div>
-                    <span class="tag tag-blue">MANTIK BULMACASI (4.9 MB)</span>
-                </div>
+        <div class="card" data-sec="regional" data-q="liga table &amp; results almanya bundesliga, 2. &amp; 3. liga puan durumu (openligadb) incelemede">
+          <div class="left">
+            <img class="app-icon" src="icons/19-liga-tabelle.png" alt="Liga Table &amp; Results" loading="lazy">
+            <div class="meta">
+              <div class="title">Liga Table &amp; Results</div>
+              <div class="desc">Almanya Bundesliga, 2. &amp; 3. Liga puan durumu (OpenLigaDB)</div>
+              <div class="tags">
+                <span class="tag tag-gold">Incelemede</span>
+                <span class="tag tag-mute">v1 (1.0.0) · 3.6 MB</span>
+              </div>
             </div>
-            <a href="apks/2-CircuitLogic.apk" class="btn-down" download>İndir</a>
+          </div>
+          <a href="apks/19-LigaTabelle-v1.apk" class="btn-down" download>İndir ⬇</a>
         </div>
-
-        <!-- NEON BLOCK BLAST -->
-        <div class="card">
-            <div class="left">
-                <img class="app-icon" src="icons/neon-block-512.png" alt="Neon Block Blast">
-                <div class="meta">
-                    <div class="title">Neon Block Blast</div>
-                    <div class="desc">3 Blok Önizlemeli Izgara • Işıltılı Neon Patlama • Kombo Efektleri</div>
-                    <span class="tag tag-blue">BLOK PUZZLE (4.4 MB)</span>
-                </div>
+        <div class="card" data-sec="regional" data-q="footy ladder &amp; scores avustralya afl puan tablosu, tur fiksturu ve skorlar incelemede">
+          <div class="left">
+            <img class="app-icon" src="icons/20-footy-ladder.png" alt="Footy Ladder &amp; Scores" loading="lazy">
+            <div class="meta">
+              <div class="title">Footy Ladder &amp; Scores</div>
+              <div class="desc">Avustralya AFL puan tablosu, tur fiksturu ve skorlar</div>
+              <div class="tags">
+                <span class="tag tag-gold">Incelemede</span>
+                <span class="tag tag-mute">v1 (1.0.0) · 3.6 MB</span>
+              </div>
             </div>
-            <a href="apks/3-NeonBlockBlast.apk" class="btn-down" download>İndir</a>
+          </div>
+          <a href="apks/20-FootyLadder-v1.apk" class="btn-down" download>İndir ⬇</a>
         </div>
-
-        <!-- STRATA MERGE -->
-        <div class="card">
-            <div class="left">
-                <img class="app-icon" src="icons/merge-oyun-512.png" alt="Strata Merge">
-                <div class="meta">
-                    <div class="title">Strata 2048: Merge Quest</div>
-                    <div class="desc">Mücevher &amp; Kristal Birleştirme • Çekiç &amp; Karıştır Güçleri • Akıcı 2048</div>
-                    <span class="tag tag-blue">2048 MERGE (4.7 MB)</span>
-                </div>
+        <div class="card" data-sec="regional" data-q="stl maker: image to 3d fotograftan cihaz ici 3b yazici stl modeli uretici incelemede">
+          <div class="left">
+            <img class="app-icon" src="icons/26-stl-maker.png" alt="STL Maker: Image to 3D" loading="lazy">
+            <div class="meta">
+              <div class="title">STL Maker: Image to 3D</div>
+              <div class="desc">Fotograftan cihaz ici 3B yazici STL modeli uretici</div>
+              <div class="tags">
+                <span class="tag tag-gold">Incelemede</span>
+                <span class="tag tag-mute">v1 (1.0.0) · 3.6 MB</span>
+              </div>
             </div>
-            <a href="apks/4-StrataMerge.apk" class="btn-down" download>İndir</a>
+          </div>
+          <a href="apks/20-STLMaker.apk" class="btn-down" download>İndir ⬇</a>
         </div>
-
-        <!-- NEON RICOCHET -->
-        <div class="card">
-            <div class="left">
-                <img class="app-icon" src="icons/neon-ricochet-512.png" alt="Neon Ricochet">
-                <div class="meta">
-                    <div class="title">Neon Ricochet: Aim &amp; Pop</div>
-                    <div class="desc">Seken Enerji Topu Fiziği • Neon Tuğlalar • Hassas Açı Yansıtma</div>
-                    <span class="tag tag-blue">ARCADE SHOOTER (4.1 MB)</span>
-                </div>
+        <div class="card" data-sec="regional" data-q="park out: car escape otoparktan kacis trafik bulmacasi incelemede">
+          <div class="left">
+            <img class="app-icon" src="icons/25-park-out.png" alt="Park Out: Car Escape" loading="lazy">
+            <div class="meta">
+              <div class="title">Park Out: Car Escape</div>
+              <div class="desc">Otoparktan kacis trafik bulmacasi</div>
+              <div class="tags">
+                <span class="tag tag-gold">Incelemede</span>
+                <span class="tag tag-mute">v1 (1.0.0) · 4.7 MB</span>
+              </div>
             </div>
-            <a href="apks/5-NeonRicochet.apk" class="btn-down" download>İndir</a>
+          </div>
+          <a href="apks/17-ParkOut.apk" class="btn-down" download>İndir ⬇</a>
         </div>
-
-        <!-- SKY HOPPER -->
-        <div class="card">
-            <div class="left">
-                <img class="app-icon" src="icons/sky-hopper-512.png" alt="Sky Hopper">
-                <div class="meta">
-                    <div class="title">Sky Hopper: Endless Dash</div>
-                    <div class="desc">Skebob Tavşanı • Sonsuz Gökyüzü &amp; Bulut Parkuru • Hızlı Refleks</div>
-                    <span class="tag tag-blue">SONSUZ KOŞU (4.2 MB)</span>
-                </div>
+</div><div class="section-title" data-sec-head="live">🎮 Yayındaki Oyunlar & Araçlar (Güncel APK)</div>
+<div class="grid" data-sec-grid="live">
+        <div class="card" data-sec="live" data-q="rescue dog: draw to save tek cizgiyle kopegi arilardan koru (ads.kt v10) yayinda">
+          <div class="left">
+            <img class="app-icon" src="icons/rescue-dog-512.png" alt="Rescue Dog: Draw to Save" loading="lazy">
+            <div class="meta">
+              <div class="title">Rescue Dog: Draw to Save</div>
+              <div class="desc">Tek cizgiyle kopegi arilardan koru (Ads.kt v10)</div>
+              <div class="tags">
+                <span class="tag tag-green">Yayinda</span>
+                <span class="tag tag-mute">v10 (2.2.1) · 5.3 MB</span>
+              </div>
             </div>
-            <a href="apks/7-SkyHopper.apk" class="btn-down" download>İndir</a>
+          </div>
+          <a href="apks/10-RescueDog-v10.apk" class="btn-down" download>İndir ⬇</a>
         </div>
-
-        <!-- BÜTÇE DEFTERİ -->
-        <div class="card">
-            <div class="left">
-                <img class="app-icon" src="icons/butce-defteri-512.png" alt="Bütçe Defteri">
-                <div class="meta">
-                    <div class="title">Budget Book: Gider Defteri</div>
-                    <div class="desc">Kişisel Finans • Harcama Kategorileri • Grafiksel Raporlama • Güvenli</div>
-                    <span class="tag tag-purple">FİNANS &amp; ARAÇ (3.2 MB)</span>
-                </div>
+        <div class="card" data-sec="live" data-q="ridge rush: hill drive 2b suspansiyon fizikli tepe tirmanma yarisi (v5) yayinda">
+          <div class="left">
+            <img class="app-icon" src="icons/17-ridge-rush.png" alt="Ridge Rush: Hill Drive" loading="lazy">
+            <div class="meta">
+              <div class="title">Ridge Rush: Hill Drive</div>
+              <div class="desc">2B suspansiyon fizikli tepe tirmanma yarisi (v5)</div>
+              <div class="tags">
+                <span class="tag tag-green">Yayinda</span>
+                <span class="tag tag-mute">v5 (1.1.1) · 5.1 MB</span>
+              </div>
             </div>
-            <a href="apks/1-ButceDefteri.apk" class="btn-down" download>İndir</a>
+          </div>
+          <a href="apks/17-RidgeRush-v5.apk" class="btn-down" download>İndir ⬇</a>
         </div>
-
-    </div>
-
-    <!-- 3. BÖLÜM: LOTO VE KUPON KONTROL -->
-    <div class="section-title">🎰 Loto &amp; Çekiliş Takip Araçları (Optik Form Kupon)</div>
-    <div class="grid">
-
-        <!-- TÜRKİYE -->
-        <div class="card card-lotto">
-            <div class="left">
-                <img class="app-icon" src="icons/milli-piyango-512.png" alt="Ticket Book">
-                <div class="meta">
-                    <div class="title">Ticket Book: Number Tracker</div>
-                    <div class="desc">Kupon defteri: sayılarını kaydet ve kontrol et</div>
-                    <span class="tag tag-gold">TÜRKİYE (3.3 MB)</span>
-                </div>
+        <div class="card" data-sec="live" data-q="freeze dried fruit slice asmr citir meyve dilimleme arcade (ads.kt v4) yayinda">
+          <div class="left">
+            <img class="app-icon" src="icons/23-fruit-slice.png" alt="Freeze Dried Fruit Slice ASMR" loading="lazy">
+            <div class="meta">
+              <div class="title">Freeze Dried Fruit Slice ASMR</div>
+              <div class="desc">Citir meyve dilimleme arcade (Ads.kt v4)</div>
+              <div class="tags">
+                <span class="tag tag-green">Yayinda</span>
+                <span class="tag tag-mute">v4 (1.0.3) · 3.4 MB</span>
+              </div>
             </div>
-            <a href="apks/9-MilliPiyangoSonuc.apk" class="btn-down btn-gold" download>İndir</a>
+          </div>
+          <a href="apks/23-FruitSlice-v4.apk" class="btn-down" download>İndir ⬇</a>
         </div>
-
-        <!-- USA -->
-        <div class="card card-lotto">
-            <div class="left">
-                <img class="app-icon" src="icons/us-lotto-512.png" alt="USA Lotto">
-                <div class="meta">
-                    <div class="title">Lotto Ticket Checker</div>
-                    <div class="desc">Optik form kupon doldurma ve kendi girdiğin sonuçla karşılaştırma</div>
-                    <span class="tag tag-gold">UNITED STATES (4.5 MB)</span>
-                </div>
+        <div class="card" data-sec="live" data-q="neon block blast 8x8 neon blok yerlestirme &amp; patlatma (ads.kt v10) yayinda">
+          <div class="left">
+            <img class="app-icon" src="icons/neon-block-512.png" alt="Neon Block Blast" loading="lazy">
+            <div class="meta">
+              <div class="title">Neon Block Blast</div>
+              <div class="desc">8x8 neon blok yerlestirme &amp; patlatma (Ads.kt v10)</div>
+              <div class="tags">
+                <span class="tag tag-green">Yayinda</span>
+                <span class="tag tag-mute">v10 (1.4.1) · 5.4 MB</span>
+              </div>
             </div>
-            <a href="apks/11-USALotto.apk" class="btn-down btn-gold" download>İndir</a>
+          </div>
+          <a href="apks/03-NeonBlockBlast-v10.apk" class="btn-down" download>İndir ⬇</a>
         </div>
-
-        <!-- GERMANY -->
-        <div class="card card-lotto">
-            <div class="left">
-                <img class="app-icon" src="icons/de-lotto-512.png" alt="DE Lotto">
-                <div class="meta">
-                    <div class="title">Tippschein Check</div>
-                    <div class="desc">Tippschein ausfüllen und mit eigenen Zahlen vergleichen</div>
-                    <span class="tag tag-gold">DEUTSCHLAND (4.7 MB)</span>
-                </div>
+        <div class="card" data-sec="live" data-q="bolt out: screw puzzle vida sokme ve plaka dusurme fizik bulmacasi yayinda">
+          <div class="left">
+            <img class="app-icon" src="icons/24-bolt-out.png" alt="Bolt Out: Screw Puzzle" loading="lazy">
+            <div class="meta">
+              <div class="title">Bolt Out: Screw Puzzle</div>
+              <div class="desc">Vida sokme ve plaka dusurme fizik bulmacasi</div>
+              <div class="tags">
+                <span class="tag tag-green">Yayinda</span>
+                <span class="tag tag-mute">v1 (1.0.0) · 5.1 MB</span>
+              </div>
             </div>
-            <a href="apks/12-DELotto.apk" class="btn-down btn-gold" download>İndir</a>
+          </div>
+          <a href="apks/18-BoltOut.apk" class="btn-down" download>İndir ⬇</a>
         </div>
-
-        <!-- GLOBAL -->
-        <div class="card card-lotto">
-            <div class="left">
-                <img class="app-icon" src="icons/global-lotto-512.png" alt="Global Lotto">
-                <div class="meta">
-                    <div class="title">World Lotto Ticket Book</div>
-                    <div class="desc">Dünya Çapında Çekiliş Sonuçları ve Çoklu Kupon Karşılaştırma Aracı</div>
-                    <span class="tag tag-gold">GLOBAL (2.8 MB)</span>
-                </div>
+        <div class="card" data-sec="live" data-q="arrow out: tap puzzle ok kacis bulmacasi ve ozel ok paletleri yayinda">
+          <div class="left">
+            <img class="app-icon" src="icons/16-arrow-out.png" alt="Arrow Out: Tap Puzzle" loading="lazy">
+            <div class="meta">
+              <div class="title">Arrow Out: Tap Puzzle</div>
+              <div class="desc">Ok kacis bulmacasi ve ozel ok paletleri</div>
+              <div class="tags">
+                <span class="tag tag-green">Yayinda</span>
+                <span class="tag tag-mute">v7 (1.2.0) · 5.1 MB</span>
+              </div>
             </div>
-            <a href="apks/14-GlobalLotto.apk" class="btn-down btn-gold" download>İndir</a>
+          </div>
+          <a href="apks/16-ArrowOut.apk" class="btn-down" download>İndir ⬇</a>
         </div>
-
-    </div>
-
-    <div class="footer">
-        © 2026 Simeal Apps &amp; Digitar Games • Tüm Hakları Saklıdır.<br>
-        v2 Özel Karakter Simgeleri Aktif • Güvenli Doğrudan Kurulum
-    </div>
-
+        <div class="card" data-sec="live" data-q="circuit logic kablo dondurme elektrik devresi mantik bulmacasi yayinda">
+          <div class="left">
+            <img class="app-icon" src="icons/circuit-logic-512.png" alt="Circuit Logic" loading="lazy">
+            <div class="meta">
+              <div class="title">Circuit Logic</div>
+              <div class="desc">Kablo dondurme elektrik devresi mantik bulmacasi</div>
+              <div class="tags">
+                <span class="tag tag-green">Yayinda</span>
+                <span class="tag tag-mute">v108 (2.3.0) · 5.4 MB</span>
+              </div>
+            </div>
+          </div>
+          <a href="apks/2-CircuitLogic.apk" class="btn-down" download>İndir ⬇</a>
+        </div>
+        <div class="card" data-sec="live" data-q="tile caso: slide &amp; match akdeniz seramik karolari uclu eslestirme yayinda">
+          <div class="left">
+            <img class="app-icon" src="icons/tile-caso-512.png" alt="Tile Caso: Slide &amp; Match" loading="lazy">
+            <div class="meta">
+              <div class="title">Tile Caso: Slide &amp; Match</div>
+              <div class="desc">Akdeniz seramik karolari uclu eslestirme</div>
+              <div class="tags">
+                <span class="tag tag-green">Yayinda</span>
+                <span class="tag tag-mute">v107 (2.3.0) · 5.3 MB</span>
+              </div>
+            </div>
+          </div>
+          <a href="apks/6-TileCaso.apk" class="btn-down" download>İndir ⬇</a>
+        </div>
+        <div class="card" data-sec="live" data-q="strata 2048: merge quest kristal 2048 sayi birlestirme bulmacasi yayinda">
+          <div class="left">
+            <img class="app-icon" src="icons/merge-oyun-512.png" alt="Strata 2048: Merge Quest" loading="lazy">
+            <div class="meta">
+              <div class="title">Strata 2048: Merge Quest</div>
+              <div class="desc">Kristal 2048 sayi birlestirme bulmacasi</div>
+              <div class="tags">
+                <span class="tag tag-green">Yayinda</span>
+                <span class="tag tag-mute">v8 (1.4.0) · 5.6 MB</span>
+              </div>
+            </div>
+          </div>
+          <a href="apks/4-StrataMerge.apk" class="btn-down" download>İndir ⬇</a>
+        </div>
+        <div class="card" data-sec="live" data-q="neon ricochet: aim &amp; pop seken enerji topu neon tugla kirma yayinda">
+          <div class="left">
+            <img class="app-icon" src="icons/neon-ricochet-512.png" alt="Neon Ricochet: Aim &amp; Pop" loading="lazy">
+            <div class="meta">
+              <div class="title">Neon Ricochet: Aim &amp; Pop</div>
+              <div class="desc">Seken enerji topu neon tugla kirma</div>
+              <div class="tags">
+                <span class="tag tag-green">Yayinda</span>
+                <span class="tag tag-mute">v106 (2.3.0) · 5.1 MB</span>
+              </div>
+            </div>
+          </div>
+          <a href="apks/5-NeonRicochet.apk" class="btn-down" download>İndir ⬇</a>
+        </div>
+        <div class="card" data-sec="live" data-q="sky hopper: endless dash bulutlarin ustunde sonsuz ziplama yayinda">
+          <div class="left">
+            <img class="app-icon" src="icons/sky-hopper-512.png" alt="Sky Hopper: Endless Dash" loading="lazy">
+            <div class="meta">
+              <div class="title">Sky Hopper: Endless Dash</div>
+              <div class="desc">Bulutlarin ustunde sonsuz ziplama</div>
+              <div class="tags">
+                <span class="tag tag-green">Yayinda</span>
+                <span class="tag tag-mute">v106 (2.3.0) · 5.1 MB</span>
+              </div>
+            </div>
+          </div>
+          <a href="apks/7-SkyHopper.apk" class="btn-down" download>İndir ⬇</a>
+        </div>
+        <div class="card" data-sec="live" data-q="arrow pin: spin &amp; tap donen carka igne firlatma refleks oyunu yayinda">
+          <div class="left">
+            <img class="app-icon" src="icons/arrow-pin-512.png" alt="Arrow Pin: Spin &amp; Tap" loading="lazy">
+            <div class="meta">
+              <div class="title">Arrow Pin: Spin &amp; Tap</div>
+              <div class="desc">Donen carka igne firlatma refleks oyunu</div>
+              <div class="tags">
+                <span class="tag tag-green">Yayinda</span>
+                <span class="tag tag-mute">v6 (1.1.0) · 5.6 MB</span>
+              </div>
+            </div>
+          </div>
+          <a href="apks/8-ArrowPin.apk" class="btn-down" download>İndir ⬇</a>
+        </div>
+        <div class="card" data-sec="live" data-q="slime pop: squishy asmr rahatlatici 3b slime ve baloncuk patlatma yayinda">
+          <div class="left">
+            <img class="app-icon" src="icons/slime-pop-512.png" alt="Slime Pop: Squishy ASMR" loading="lazy">
+            <div class="meta">
+              <div class="title">Slime Pop: Squishy ASMR</div>
+              <div class="desc">Rahatlatici 3B slime ve baloncuk patlatma</div>
+              <div class="tags">
+                <span class="tag tag-green">Yayinda</span>
+                <span class="tag tag-mute">v8 (1.2.3) · 5.4 MB</span>
+              </div>
+            </div>
+          </div>
+          <a href="apks/13-SlimePop.apk" class="btn-down" download>İndir ⬇</a>
+        </div>
+        <div class="card" data-sec="live" data-q="budget book kisisel gelir/gider ve kategori butce takibi yayinda">
+          <div class="left">
+            <img class="app-icon" src="icons/butce-defteri-512.png" alt="Budget Book" loading="lazy">
+            <div class="meta">
+              <div class="title">Budget Book</div>
+              <div class="desc">Kisisel gelir/gider ve kategori butce takibi</div>
+              <div class="tags">
+                <span class="tag tag-green">Yayinda</span>
+                <span class="tag tag-mute">v7 (1.2.0) · 3.5 MB</span>
+              </div>
+            </div>
+          </div>
+          <a href="apks/1-ButceDefteri.apk" class="btn-down" download>İndir ⬇</a>
+        </div>
+</div>
+  <div class="footer">
+    © 2026 Digitar Games · <a href="https://games.digitar.cloud/">games.digitar.cloud</a> · <a href="https://furkantarhan.github.io/privacy.html">Privacy Policy</a>
+  </div>
+</div>
+<script>
+const q=document.getElementById('q'),tabs=[...document.querySelectorAll('.tab')],cards=[...document.querySelectorAll('.card')];
+let cur='all';
+function apply(){
+  const s=q.value.trim().toLowerCase();
+  cards.forEach(c=>{c.style.display=((cur==='all'||c.dataset.sec===cur)&&(!s||c.dataset.q.includes(s)))?'':'none';});
+  document.querySelectorAll('[data-sec-grid]').forEach(g=>{
+    const any=[...g.children].some(x=>x.style.display!=='none');
+    g.style.display=any?'':'none';
+    const h=document.querySelector('[data-sec-head="'+g.dataset.secGrid+'"]');
+    if(h)h.style.display=any?'':'none';
+  });
+}
+tabs.forEach(t=>t.onclick=()=>{tabs.forEach(x=>x.classList.remove('active'));t.classList.add('active');cur=t.dataset.f;apply();});
+q.oninput=apply;
+</script>
 </body>
 </html>
